@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cash Flow Dashboard</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- App Title -->
+  <header>
+    <h1>💰 Cash Flow Dashboard</h1>
+    <p>Track your salary and expenses in real time</p>
+  </header>
+
+  <!-- Salary Section -->
+  <section id="salary-section">
+    <h2>Enter Your Salary</h2>
+
+    <input 
+      type="number" 
+      id="salaryInput" 
+      placeholder="Enter total salary" 
+    />
+
+    <button id="setSalaryBtn">Set Salary</button>
+
+    <p>
+      Total Salary: ₹<span id="salaryDisplay">0</span>
+    </p>
+  </section>
+
+  <!-- Expense Section -->
+  <section id="expense-section">
+    <h2>Add Expense</h2>
+
+    <input 
+      type="text" 
+      id="expenseNameInput" 
+      placeholder="Expense name" 
+    />
+
+    <input 
+      type="number" 
+      id="expenseAmountInput" 
+      placeholder="Expense amount" 
+    />
+
+    <button id="addExpenseBtn">Add Expense</button>
+  </section>
+
+  <!-- Expense List -->
+  <section id="expense-list-section">
+    <h2>Expenses</h2>
+
+    <ul id="expenseList">
+      <!-- Expenses will be added here dynamically -->
+    </ul>
+  </section>
+
+  <!-- Balance Section -->
+  <section id="balance-section">
+    <h2>Remaining Balance</h2>
+
+    <p>
+      ₹<span id="balanceDisplay">0</span>
+    </p>
+  </section>
+
+  <script src="js/calculations.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
