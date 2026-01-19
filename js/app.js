@@ -1,8 +1,8 @@
-// -------- App State --------
+//  App State
 let totalSalary = 0;
 let expenses = [];
 
-// -------- DOM Elements --------
+//  DOM Elements 
 const salaryInput = document.getElementById("salaryInput");
 const setSalaryBtn = document.getElementById("setSalaryBtn");
 
@@ -10,16 +10,12 @@ const expenseNameInput = document.getElementById("expenseNameInput");
 const expenseAmountInput = document.getElementById("expenseAmountInput");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 
-// -------- Event Listeners --------
+//  Event Listeners 
 setSalaryBtn.addEventListener("click", handleSetSalary);
 addExpenseBtn.addEventListener("click", handleAddExpense);
 
-// -------- Initialize App --------
 initApp();
 
-// -------- Functions --------
-
-// Runs once when page loads
 function initApp() {
   // Load data from localStorage
   totalSalary = getSalaryFromStorage();
@@ -79,6 +75,7 @@ function updateBalance() {
 
 // Handle deleting expense
 function deleteExpense(index) {
+    
   // Remove expense from array
   expenses.splice(index, 1);
 
