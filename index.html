@@ -41,7 +41,7 @@
       id="expenseNameInput" 
       placeholder="Expense name" 
     />
-
+  
     <input 
       type="number" 
       id="expenseAmountInput" 
@@ -69,6 +69,12 @@
     </p>
   </section>
 
+  <section id="chart-section">
+  <h2>Expense Overview</h2>
+  <canvas id="expenseChart"></canvas>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/calculations.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/ui.js"></script>

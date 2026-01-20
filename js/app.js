@@ -25,6 +25,7 @@ function initApp() {
   updateSalaryUI(totalSalary);
   renderExpenseList(expenses);
   updateBalance();
+  updateExpenseChart(totalSalary, expenses);
 }
 
 // Handle salary setting
@@ -43,6 +44,8 @@ function handleSetSalary() {
 
   updateSalaryUI(totalSalary);
   updateBalance();
+  updateExpenseChart(totalSalary, expenses);
+
 }
 
 // Handle adding expense
@@ -71,6 +74,7 @@ function handleAddExpense() {
 function updateBalance() {
   const balance = calculateRemainingBalance(totalSalary, expenses);
   updateBalanceUI(balance);
+  updateExpenseChart(totalSalary, expenses);
 }
 
 // Handle deleting expense
@@ -85,5 +89,6 @@ function deleteExpense(index) {
   // Update UI
   renderExpenseList(expenses);
   updateBalance();
+  updateExpenseChart(totalSalary, expenses);
 }
 
