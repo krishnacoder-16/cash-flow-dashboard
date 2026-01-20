@@ -10,6 +10,10 @@ function updateBalanceUI(balance) {
   document.getElementById("balanceDisplay").textContent = balance;
 }
 
+function updateTotalExpensesUI(totalExpenses) {
+  document.getElementById("totalExpensesDisplay").textContent = totalExpenses;
+}
+
 function renderExpenseList(expenses) {
   const expenseList = document.getElementById("expenseList");
   expenseList.innerHTML = "";
@@ -38,12 +42,30 @@ function renderExpenseList(expenses) {
 // Update balance calculation and UI
 
 function updateExpenseChart(salary, expenses) {
-  const totalExpenses = calculateTotalExpenses(expenses);
+  const categoryTotals = {};
+  let totalExpenses = 0;
+
+  // Group expenses by category
+  expenses.forEach((expense) => {
+    const category = expense.category || "Other";
+
+    if (!categoryTotals[category]) {
+      categoryTotals[category] = 0;
+    }
+
+    categoryTotals[category] += expense.amount;
+    totalExpenses += expense.amount;
+  });
+
   const remainingBalance = salary - totalExpenses;
+
+  // Prepare chart data
+  const labels = ["Remaining Balance", ...Object.keys(categoryTotals)];
+  const data = [remainingBalance, ...Object.values(categoryTotals)];
 
   const ctx = document.getElementById("expenseChart").getContext("2d");
 
-  // Destroy old chart before creating new one
+  // Destroy old chart
   if (expenseChart) {
     expenseChart.destroy();
   }
@@ -51,11 +73,10 @@ function updateExpenseChart(salary, expenses) {
   expenseChart = new Chart(ctx, {
     type: "pie",
     data: {
-      labels: ["Remaining Balance", "Total Expenses"],
+      labels: labels,
       datasets: [
         {
-          data: [remainingBalance, totalExpenses],
-          backgroundColor: ["#2ecc71", "#e74c3c"]
+          data: data
         }
       ]
     },

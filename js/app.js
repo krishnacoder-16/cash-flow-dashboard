@@ -58,7 +58,13 @@ function handleAddExpense() {
     return;
   }
 
-  expenses.push({ name, amount });
+  const category = detectCategory(name);
+  expenses.push({
+    name,
+    amount,
+    category
+  });
+
 
   // Save to storage
   saveExpensesToStorage(expenses);
@@ -72,10 +78,13 @@ function handleAddExpense() {
 
 // Update balance using calculation module
 function updateBalance() {
-  const balance = calculateRemainingBalance(totalSalary, expenses);
+  const totalExpenses = calculateTotalExpenses(expenses);
+  const balance = totalSalary - totalExpenses;
+
+  updateTotalExpensesUI(totalExpenses);
   updateBalanceUI(balance);
-  updateExpenseChart(totalSalary, expenses);
 }
+
 
 // Handle deleting expense
 function deleteExpense(index) {
