@@ -83,6 +83,7 @@ function updateBalance() {
 
   updateTotalExpensesUI(totalExpenses);
   updateBalanceUI(balance);
+  updateBudgetAlert(totalSalary, balance);
 }
 
 

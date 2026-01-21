@@ -85,3 +85,20 @@ function updateExpenseChart(salary, expenses) {
     }
   });
 }
+
+function updateBudgetAlert(salary, balance) {
+  const warningEl = document.getElementById("budgetWarning");
+  const balanceEl = document.getElementById("balanceDisplay");
+
+  const threshold = salary * 0.1;
+
+  if (salary > 0 && balance < threshold) {
+    warningEl.style.display = "block";
+    warningEl.style.color = "#ef4444";
+    balanceEl.style.color = "#ef4444";
+  } else {
+    warningEl.style.display = "none";
+    balanceEl.style.color = "#16a34a";
+  }
+}
+
