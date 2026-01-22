@@ -75,14 +75,15 @@
     <p id="budgetWarning" style="display: none;">
       ⚠️ Warning: You are running low on budget!
     </p>
-
+    <button id="downloadPdfBtn">Download PDF Report</button>
   </section>
 
   <section id="chart-section">
   <h2>Expense Overview</h2>
   <canvas id="expenseChart"></canvas>
   </section>
-
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/calculations.js"></script>
   <script src="js/category.js"></script>

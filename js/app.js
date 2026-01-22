@@ -1,3 +1,4 @@
+
 //  App State
 let totalSalary = 0;
 let expenses = [];
@@ -5,14 +6,19 @@ let expenses = [];
 //  DOM Elements 
 const salaryInput = document.getElementById("salaryInput");
 const setSalaryBtn = document.getElementById("setSalaryBtn");
-
 const expenseNameInput = document.getElementById("expenseNameInput");
 const expenseAmountInput = document.getElementById("expenseAmountInput");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
+const downloadPdfBtn = document.getElementById("downloadPdfBtn");
+
 
 //  Event Listeners 
+
 setSalaryBtn.addEventListener("click", handleSetSalary);
 addExpenseBtn.addEventListener("click", handleAddExpense);
+downloadPdfBtn.addEventListener("click", () => {
+  generatePDFReport(totalSalary, expenses);
+});
 
 initApp();
 

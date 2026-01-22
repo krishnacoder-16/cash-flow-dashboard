@@ -101,4 +101,56 @@ function updateBudgetAlert(salary, balance) {
     balanceEl.style.color = "#16a34a";
   }
 }
+function generatePDFReport(salary, expenses) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
+  let y = 20;
+
+  // Title
+  doc.setFontSize(16);
+  doc.text("Cash Flow Report", 20, y);
+  y += 12;
+
+  const totalExpenses = calculateTotalExpenses(expenses);
+  const remainingBalance = salary - totalExpenses;
+
+  // Summary
+  doc.setFontSize(12);
+  doc.text(`Salary: Rs.${salary}`, 20, y);
+  y += 8;
+  doc.text(`Total Expenses: Rs.${totalExpenses}`,20, y);
+  y += 8;
+  doc.text(`Remaining Balance: Rs.${remainingBalance}`, 20, y);
+  y += 12;
+
+  // Expense List
+  doc.text("Expenses:", 20, y);
+  y += 8;
+
+  expenses.forEach((expense, index) => {
+    doc.text(`${index + 1}. ${expense.name} - Rs.${expense.amount}`,20,y);
+    y += 7;
+  });
+
+  // Add space before chart
+  y += 10;
+
+  // Get chart as image
+  const chartCanvas = document.getElementById("expenseChart");
+
+  if (chartCanvas) {
+    const chartImage = chartCanvas.toDataURL("image/png");
+
+    // Add chart image to PDF
+    doc.addImage(chartImage,"PNG",30,y,150,100);
+    y += 110;
+  }
+
+  // Footer
+  const date = new Date().toLocaleDateString();
+  doc.text(`Generated on: ${date}`, 20, y);
+
+  // Save PDF
+  doc.save("cash-flow-report.pdf");
+}
