@@ -1,4 +1,3 @@
-
 //  App State
 let totalSalary = 0;
 let expenses = [];
@@ -10,7 +9,7 @@ const expenseNameInput = document.getElementById("expenseNameInput");
 const expenseAmountInput = document.getElementById("expenseAmountInput");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 const downloadPdfBtn = document.getElementById("downloadPdfBtn");
-
+const currencySelector = document.getElementById("currencySelector");
 
 //  Event Listeners 
 
@@ -18,6 +17,15 @@ setSalaryBtn.addEventListener("click", handleSetSalary);
 addExpenseBtn.addEventListener("click", handleAddExpense);
 downloadPdfBtn.addEventListener("click", () => {
   generatePDFReport(totalSalary, expenses);
+});
+currencySelector.addEventListener("change", async (e) => {
+  currentCurrency = e.target.value;
+  await fetchExchangeRate(currentCurrency);
+
+  updateSalaryUI(totalSalary);
+  renderExpenseList(expenses);
+  updateBalance();
+  updateExpenseChart(totalSalary, expenses);
 });
 
 initApp();
@@ -71,7 +79,6 @@ function handleAddExpense() {
     category
   });
 
-
   // Save to storage
   saveExpensesToStorage(expenses);
 
@@ -91,7 +98,6 @@ function updateBalance() {
   updateBalanceUI(balance);
   updateBudgetAlert(totalSalary, balance);
 }
-
 
 // Handle deleting expense
 function deleteExpense(index) {

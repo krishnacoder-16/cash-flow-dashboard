@@ -2,16 +2,22 @@ let expenseChart = null;
 
 // Update salary display
 function updateSalaryUI(salary) {
-  document.getElementById("salaryDisplay").textContent = salary;
+  const symbol = CURRENCY_SYMBOLS[currentCurrency];
+  const value = (salary * exchangeRate).toFixed(2);
+  document.getElementById("salaryDisplay").textContent = `${symbol}${value}`;
 }
 
 // Update balance display
 function updateBalanceUI(balance) {
-  document.getElementById("balanceDisplay").textContent = balance;
+  const symbol = CURRENCY_SYMBOLS[currentCurrency];
+  const value = (balance * exchangeRate).toFixed(2);
+  document.getElementById("balanceDisplay").textContent = `${symbol}${value}`;
 }
 
 function updateTotalExpensesUI(totalExpenses) {
-  document.getElementById("totalExpensesDisplay").textContent = totalExpenses;
+  const symbol = CURRENCY_SYMBOLS[currentCurrency];
+  const value = (totalExpenses * exchangeRate).toFixed(2);
+  document.getElementById("totalExpensesDisplay").textContent = `${symbol}${value}`;
 }
 
 function renderExpenseList(expenses) {
@@ -22,7 +28,7 @@ function renderExpenseList(expenses) {
     const li = document.createElement("li");
 
     const text = document.createElement("span");
-    text.textContent = `${expense.name} - ₹${expense.amount}`;
+    text.textContent = `${expense.name} - ${CURRENCY_SYMBOLS[currentCurrency]}${(expense.amount * exchangeRate).toFixed(2)}`;
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "🗑️";

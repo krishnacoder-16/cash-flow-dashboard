@@ -1,7 +1,3 @@
-/* ===============================
-   Design System (CSS Variables)
-=============================== */
-
 :root {
   --bg: #f4f7fb;
   --card-bg: #ffffff;
@@ -16,9 +12,7 @@
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ===============================
-   Global Reset
-=============================== */
+/* Global Reset */
 
 * {
   margin: 0;
@@ -34,9 +28,7 @@ body {
   padding: 24px;
 }
 
-/* ===============================
-   Header
-=============================== */
+/*  Header */
 
 header {
   text-align: center;
@@ -53,9 +45,7 @@ header p {
   margin-top: 6px;
 }
 
-/* ===============================
-   Card Layout
-=============================== */
+/* Card Layout */
 
 section {
   background: var(--card-bg);
@@ -65,9 +55,7 @@ section {
   box-shadow: var(--shadow-sm);
 }
 
-/* ===============================
-   Inputs & Buttons
-=============================== */
+/* Inputs & Buttons */
 
 input {
   width: 100%;
@@ -98,9 +86,7 @@ button:hover {
   background-color: var(--primary-dark);
 }
 
-/* ===============================
-   Expense List
-=============================== */
+/* Expense List */
 
 #expenseList {
   list-style: none;
@@ -128,9 +114,7 @@ button:hover {
   background-color: var(--danger-dark);
 }
 
-/* ===============================
-   Summary Section
-=============================== */
+/* Summary Section */
 
 #balance-section p {
   font-size: 1rem;
@@ -147,9 +131,7 @@ button:hover {
   color: var(--success);
 }
 
-/* ===============================
-   Chart Section
-=============================== */
+/* Chart Section */
 
 #chart-section {
   text-align: center;
@@ -160,13 +142,11 @@ button:hover {
 }
 
 canvas {
-  max-width: 350px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
-/* ===============================
-   Responsive
-=============================== */
+/* Responsive */
 
 @media (min-width: 768px) {
   section {
