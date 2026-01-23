@@ -1,22 +1,11 @@
 \# 💰 Cash Flow Dashboard
 
 
+### Dashboard
+![Dashboard](assets/dashboard.png)
 
-\## 📸 Project Preview
-
-
-
-\### Dashboard
-
-!\[Dashboard](assets/dashboard.png)
-
-
-
-\### PDF Report
-
-!\[PDF Report](assets/pdf-report.png)
-
-
+### PDF Report
+![PDF Report](assets/pdf-report.png)
 
 
 
